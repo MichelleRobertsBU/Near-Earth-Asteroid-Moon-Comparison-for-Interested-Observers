@@ -4,6 +4,7 @@ from xml.dom.minidom import DocumentType
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 
 df = pd.read_csv('NEO Earth Close Approaches (2).csv')
 df.head()
@@ -132,4 +133,12 @@ plt.rcParams["figure.autolayout"] = True
 
 df3.plot(y = "Min Diameter", x = "Object", kind='bar')
 plt.suptitle('Near Earth Asteroids Minimum Diameter in meters')
+plt.show()
+
+#display image
+
+img = mpimg.imread('PIA25329_small.jpg')
+imgplot = plt.imshow(img)
+plt.suptitle("The DART spacecraft, which is about the size of a vending machine, crashed into Dimorphos at 14,000 mph. This crash affected the asteroid's orbit")
+plt.figtext(0.5, 0.01, "Dart Mission - images-assets.nasa.gov/image/PIA25329/PIA25329~orig.jpg and NASA/Johns Hopkins APL/Steve Gribbe", ha="center", fontsize=12, bbox={"alpha":0.5, "pad":5})
 plt.show()
