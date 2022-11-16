@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-df = pd.read_csv('NEO Earth Close Approaches (2).csv')
+df = pd.read_csv('NEO_Earth_Close_Approaches.csv')
 df.head()
 print(df)
 
@@ -20,7 +20,7 @@ plt.rcParams["figure.autolayout"] = True
 columns = ['CA DistanceMinimum (km)','Object']
 
 # Read a CSV file
-df = pd.read_csv('NEO Earth Close Approaches (2).csv', usecols=columns)
+df = pd.read_csv('NEO_Earth_Close_Approaches.csv', usecols=columns)
 
 # Plot the lines
 colors = np.random.randint(43, size=(43))
@@ -30,20 +30,20 @@ df.plot.scatter(x = 'Object', y = 'CA DistanceMinimum (km)', c=colors, cmap='nip
 plt.suptitle('The minimum possible close-approach distance (Earth center to NEO center), in kilometers')
 plt.ylabel('Minimum Distance')
 plt.xlabel('Near Earth Object')
-plt.xlim(1)
+plt.xlim(left=-1, right=43)
 #rotate x-axis tick labels
 plt.xticks(rotation=45)
   
 plt.show()
 
 #Create 2 Diameter Columns
-df2 = pd.read_csv("NEO Earth Close Approaches (2).csv")
+df2 = pd.read_csv("NEO_Earth_Close_Approaches.csv")
 df2[['Min Diameter','Max Diameter']] = df2["Diameter"].str.split("-", expand=True)
 
 print("\n After adding two new columns : \n", df2)
 
 #read with headers
-df=pd.read_csv("NEO Earth Close Approaches (2).csv")
+df=pd.read_csv("NEO_Earth_Close_Approaches.csv")
 print(df)
 
 # Get the total number of rows
@@ -84,7 +84,7 @@ ax.axis('off')
 ax.axis('tight')
 
 ##create Dataframe
-data = pd.read_csv("NEO Earth Close Approaches (2).csv", usecols=["Object","CA DistanceMinimum (km)", "Diameter"])
+data = pd.read_csv("NEO_Earth_Close_Approaches.csv", usecols=["Object","CA DistanceMinimum (km)", "Diameter"])
 df = pd.DataFrame(data.tail(10))
 
 ## Create table
@@ -113,7 +113,7 @@ fig.patch.set_visible(False)
 ax.axis('off')
 ax.axis('tight')
 
-df3 = pd.read_csv("NEO Earth Diameter.csv", usecols=["Object", "Min Diameter"])
+df3 = pd.read_csv("NEO_Earth_Diameter.csv", usecols = ["Object", "Min Diameter"])
 df3.head()
 
 df3['Min Diameter']= df3['Min Diameter'].div(3474000)*(100)
@@ -127,7 +127,7 @@ fig.tight_layout()
 plt.show()
 
 #Bar chart of diameter comparison
-df3 = df3 = pd.read_csv("NEO Earth Diameter.csv")
+df3 = df3 = pd.read_csv("NEO_Earth_Diameter.csv")
 plt.rcParams["figure.figsize"] = [14.00, 6.50]
 plt.rcParams["figure.autolayout"] = True
 
