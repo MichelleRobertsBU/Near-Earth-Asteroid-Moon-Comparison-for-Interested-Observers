@@ -4,7 +4,7 @@ from xml.dom.minidom import DocumentType
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
+import matplotlib.image as img
 
 df = pd.read_csv('NEO_Earth_Close_Approaches.csv')
 df.head()
@@ -27,12 +27,12 @@ colors = np.random.randint(43, size=(43))
 df.plot.scatter(x = 'Object', y = 'CA DistanceMinimum (km)', c=colors, cmap='nipy_spectral')
 
 #Add title and labels to x- and y-axis
-plt.suptitle('The minimum possible close-approach distance (Earth center to NEO center), in kilometers')
+plt.suptitle('The minimum possible close-approach distance (Earth center to NEO center), in kilometers', fontsize = 15)
 plt.ylabel('Minimum Distance')
 plt.xlabel('Near Earth Object')
 plt.xlim(left=-1, right=43)
 #rotate x-axis tick labels
-plt.xticks(rotation=45)
+plt.xticks(rotation=90)
   
 plt.show()
 
@@ -76,7 +76,7 @@ print(df['CA DistanceMinimum (km)'].min())
 
 ##define figure and axes
 fig, ax = plt.subplots()
-plt.suptitle('Ten closest Asteroids (Earth center to NEO center), with Minimum Distance in kilometers and Diameter in meters')
+plt.suptitle('Ten closest Asteroids (Earth center to NEO center), with Minimum Distance in kilometers and Diameter in meters', fontsize = 15)
 
 ##hide the axes
 fig.patch.set_visible(False)
@@ -89,6 +89,8 @@ df = pd.DataFrame(data.tail(10))
 
 ## Create table
 table = ax.table(cellText=df.values, colLabels=df.columns, colColours =["palegreen"] * 10, cellLoc ='center', loc='center')
+table.set_fontsize(12)
+table.scale(1,2)
 
 ##display table
 fig.tight_layout()
@@ -96,17 +98,17 @@ plt.show()
 
 
 #Pie chart of moon distance
-
 fig1, ax1 = plt.subplots()
-plt.title('The minimum possible close-approach distance in kilometers in comparison to the Moon distance. Ten closest Asteroids.')
+plt.title('Ten closest Asteroids', fontsize = 15)
+plt.suptitle('The minimum possible close-approach distance in kilometers in comparison to the Moon distance.', fontsize = 15)
 ax1.axis('equal')
-plt.pie(df['CA DistanceMinimum (km)'], labels = df['Object'],textprops={"fontsize":15})
+plt.pie(df['CA DistanceMinimum (km)'], labels = df['Object'],textprops={"fontsize":10})
 plt.show()
 
 #Moon diameter comparison
 ##define figure and axes
 fig, ax = plt.subplots()
-plt.suptitle('Percent comparison to the Moon diameter of the ten closest Asteroids.')
+plt.suptitle('Percent comparison to the Moon diameter of the ten closest Asteroids.', fontsize=15)
 
 ##hide the axes
 fig.patch.set_visible(False)
@@ -121,6 +123,8 @@ df3 = pd.DataFrame(df3.tail(10))
 
 ## Create table
 table = ax.table(cellText=df3.values, colLabels=df3.columns, colColours =["palegreen"] * 10, cellLoc ='center', loc='center')
+table.set_fontsize(12)
+table.scale(1,2)
 
 ##display table
 fig.tight_layout()
@@ -137,8 +141,10 @@ plt.show()
 
 #display image
 
-img = mpimg.imread('PIA25329_small.jpg')
-imgplot = plt.imshow(img)
+im = img.imread('PIA25329_small.jpg')
+plt.axis('off')
+plt.imshow(im)
+
 plt.suptitle("The DART spacecraft, which is about the size of a vending machine, crashed into Dimorphos at 14,000 mph. This crash affected the asteroid's orbit")
-plt.figtext(0.5, 0.01, "Dart Mission - images-assets.nasa.gov/image/PIA25329/PIA25329~orig.jpg and NASA/Johns Hopkins APL/Steve Gribbe", ha="center", fontsize=12, bbox={"alpha":0.5, "pad":5})
+plt.figtext(0.5, 0.05, "Dart Mission - images-assets.nasa.gov/image/PIA25329/PIA25329~orig.jpg and NASA/Johns Hopkins APL/Steve Gribbe", ha="center", fontsize=12, bbox={"alpha":0.5, "pad":5})
 plt.show()
