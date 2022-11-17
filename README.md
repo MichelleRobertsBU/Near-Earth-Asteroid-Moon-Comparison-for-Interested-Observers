@@ -18,6 +18,7 @@ Installation
 * Run the program in your IDE. The program was written in 
  Python 3.10.6 in Visual Studio 2022. 
 * Run file NearEarthAsteroid.py
+* Close out of each Plot to continue program.
 * There are 3 relative links: NEO_Earth_Close_Approaches.csv, NEO_Earth_Diameter.csv, and an
 image file, PIA25329_small.jpg
 
