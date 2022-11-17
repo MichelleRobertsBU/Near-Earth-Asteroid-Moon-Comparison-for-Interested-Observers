@@ -73,6 +73,10 @@ print(df['CA DistanceMinimum (km)'].mean())
 print('The standard deviation of the minimum possible close-approach distance (Earth center to NEO center), in kilometers is')
 print(df['CA DistanceMinimum (km)'].std())
 
+#Get the median of the The minimum possible close-approach distance
+print('The median of the minimum possible close-approach distance (Earth center to NEO center), in kilometers is')
+print(df['CA DistanceMinimum (km)'].median())
+
 #Get the maximum value of the The minimum possible close-approach distance
 print('The maximum value of the minimum possible close-approach distance (Earth center to NEO center), in kilometers in this list is')
 print(df['CA DistanceMinimum (km)'].max())
@@ -175,6 +179,8 @@ plt.rcParams["figure.autolayout"] = True
 df3.plot(y = "Min Diameter", x = "Object", kind='bar')
 plt.suptitle('Near Earth Asteroids Minimum Diameter in meters')
 plt.show()
+
+#Requirement (5) Interpret your data and graphical output is met in the README.md file.
 
 #display image
 #Near Earth Asteroid Tracking provides details for future endeavors that may lead
